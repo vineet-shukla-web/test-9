@@ -1,0 +1,33 @@
+{
+  "name": "automation-skeleton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "npmlogin": "aws codeartifact login --tool npm --repository npm --domain internal --domain-owner 751250156163",
+    "lint": "eslint ./**/*.ts",
+    "prod": "cypress open --env \"ENV\"=\"prod\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/automation-skeleton"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "cypress": "^10.9.0",
+    "cypress-real-events": "^1.7.1",
+    "eslint": "^8.20.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-cypress": "^2.12.1",
+    "glob": "^8.0.3",
+    "glob-promise": "^5.0.0",
+    "moment": "^2.29.4",
+    "needle": "^3.1.0",
+    "typescript": "^4.7.4",
+    "underscore": "^1.13.6"
+  }
+}
