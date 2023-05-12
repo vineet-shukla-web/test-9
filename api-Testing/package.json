@@ -1,0 +1,25 @@
+{
+  "name": "orcaheapitesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^16.0.3",
+    "jsonpath": "^1.0.2",
+    "mocha": "^8.0.1",
+    "request": "^2.88.2",
+    "unirest": "^0.6.0",
+    "xmldom": "^0.3.0",
+    "xpath": "0.0.27"
+  }
+}
