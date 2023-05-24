@@ -1,0 +1,18 @@
+<html>
+    <script>
+    function edValueKeyPress() {
+        var edValue = document.getElementById("edValue");
+        var s = edValue.value;
+    
+        var lblValue = document.getElementById("lblValue");
+        lblValue.innerText = "The text box contains: " + s;
+    
+        //var s = $("#edValue").val();
+        //$("#lblValue").text(s);    
+    }
+    </script>
+
+    <input id="edValue" type="text" onKeyPress="edValueKeyPress()"><br>
+    <span id="lblValue">The text box contains: </span>
+
+</html>
