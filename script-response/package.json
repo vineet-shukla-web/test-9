@@ -1,0 +1,30 @@
+{
+  "name": "script_response",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^3.2.4",
+    "chalk": "^5.2.0",
+    "child_process": "^1.0.2",
+    "colors": "^1.4.0",
+    "csv-stringify": "^6.3.0",
+    "dotenv": "^16.0.3",
+    "exceljs": "^4.3.0",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.9",
+    "open": "^9.1.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
