@@ -1,0 +1,326 @@
+<%- include('index') %>
+
+<body>
+<h2>User List</h2>
+<div class="col-md-12" style="text-align:right">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" id="addbutton" >
+      Add User
+    </button>
+    </div>
+    <br/>
+    <br/>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:black">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+          
+        </div>
+        <div class="modal-body"> 
+            <form>
+            <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="email" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="email">Password:</label>
+        <input type="password" class="form-control" id="password">
+      </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea cols="80" rows="5" value="address" id="address" class="form-control">  
+     </textarea> 
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" id="phone">
+    </div>
+  
+  <input type="hidden" value="add" id="userflag">
+  <input type="hidden" value="userid" id="userid">
+  <input type="button" value="Save" id="savebutton" class="btn btn-primary"/>    
+  </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+<table id="table" class="table table-striped table-bordered" style="width:100%;font-size: 14px;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Created_date</th>
+            <th>Updated_date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+            
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.name %></td>
+            <td><%=data.email %></td>
+            <td><%=data.phone %></td>
+            <td><%=data.address %></td>
+            <td><%=data.created_date %></td>
+            <td><%=data.updated_date %></td>
+            <td><a href="/users/edit/<%=data.user_id%>">Edit</a></td>
+            <td><a href="/users/delete/<%=data.user_id%>">Delete</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %> -->
+        </table>
+        </body>
+        </html>
+        <script>
+            $( document ).ready(function() {
+                $.ajax({ url: '/auth/users',
+                 type: 'GET',
+                 dataType: 'json',
+                 success: function(output) {
+                console.log(output);
+                $('#table').DataTable( {
+                data: output,
+                "order": [[ 4, "desc" ]],
+                //"pageLength": 50,
+                "columns": [{
+                "data": "name"},
+                {"data":"email"},
+                {"data":"address"},
+                {"data":"phone"},
+                // {"data":"created_date"},
+                { 
+                                "ordering": true,
+                                "sortable":"desc",
+                                "render": function(data,type,row,meta) { // render event defines the markup of the cell text 
+                                  var createdDate = row.created_date;
+                                  createdDate = new Date(createdDate);
+                                  date = createdDate.toLocaleDateString();
+                                  time = createdDate.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+                                  console.log(date+' '+time);
+                                    return date+' '+time;
+                                }
+                            },
+        
+                            { 
+                                "ordering": true,
+                                "sortable":"desc",
+                                "render": function(data,type,row,meta) { // render event defines the markup of the cell text 
+                                  var createdDate = row.updated_date;
+                                  createdDate = new Date(createdDate);
+                                  date = createdDate.toLocaleDateString();
+                                  time = createdDate.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+                                  console.log(date+' '+time);
+                                    return date+' '+time;
+                                }
+                            },
+        
+                // {"data":"updated_date"}, 
+                { 
+                                "orderable": false,
+                                "searchable": false,
+                                "render": function(data,type,row,meta) { // render event defines the markup of the cell text 
+                                    var a = '<a href="#" id="edit" val=' + row.user_id +'><i class="fa fa-edit"></i></a>'; // row object contains the row data
+                                    return a;
+                                }
+                            },
+                            { 
+                                "orderable": false,
+                                "searchable": false,
+                                "render": function(data,type,row,meta) { // render event defines the markup of the cell text 
+                                    var a = '<a href="#" id="del" val='+row.user_id +'><i class="fa fa-trash"></i></a>'; // row object contains the row data
+                                    return a;
+                                }
+                            }
+                        
+                        ],
+        
+            
+              
+            } );
+                          }
+                });
+            });
+        
+            $('#table').on('click','#edit',function()
+            {
+                id= $(this).attr("val");
+                $('#userid').attr('value', id);
+                $("#savebutton").attr('value', 'Update');
+                $("#userflag").attr('value', 'Update');
+                $('#exampleModalLongTitle').html('Edit User');
+                $.ajax({
+                 url: '/auth/usersingle/'+id,
+                 //data:{ id: id},
+                 type: 'GET',
+                 dataType: 'json',
+                 success: function(data) { 
+                   console.log(data);
+                    var name=data[0]['name'];
+                    var email=data[0]['email'];
+                    var phone=data[0]['phone'];
+                    var address=data[0]['address'];
+        
+                    $('#name').val(name);
+                    $('#email').val(email);
+                    $('#phone').val(phone);
+                    $('#address').val(address);
+                    $('document').ready(function() {
+                      $('#exampleModalLong').modal('toggle');
+                    $('#exampleModalLong').modal('show');
+                    });
+                    
+                 }
+                });
+            })
+        
+            $('#table').on('click','#del',function()
+            {
+                id= $(this).attr("val");
+                var checkstr =  confirm('are you sure you want to delete this?');
+                if(checkstr == true){
+                 $.ajax({ url: '/auth/users',
+                 data: {id: id},
+                 type: 'DELETE',
+                 success: function(output) {
+                    alert(output);
+                    location.reload();
+                 }
+                });
+        
+                }else{
+                    return false;
+                }
+                 
+            })
+            $('#addbutton').click(function ()
+            {
+                $("#savebutton").attr('value', 'Save');
+                $("#userflag").attr('value', 'Add');
+                $('#exampleModalLongTitle').html('Add User');
+                resetform();
+            });
+            function resetform(){
+                var name=$('#name').val('');
+                var email=$('#email').val('');
+                var phone=$('#phone').val('');
+                var address=$('#address').val('');
+                var password=$('#password').val('');
+            }
+            function phonenumber(inputtxt)
+            {
+              var phoneno = /^\d{10}$/;
+              if(inputtxt.match(phoneno))
+              {
+                  return true;
+                  }
+                  else
+                  {
+                    return false;
+                  }
+              }
+            $('#savebutton').click(function ()
+            {
+                userStatus=$("#userflag").val();
+               
+                var name=$('#name').val();
+                var email=$('#email').val();
+                var phone=$('#phone').val();
+                var address=$('#address').val();
+                var password=$('#password').val();
+
+                var msg='';
+                if(name==''){
+                 msg="Name can not be blank.";
+                 alert(msg);
+                 return false;
+                }
+                if(email==''){
+                 msg="Email can not be blank";
+                 alert(msg);
+                 return false;
+               }
+              
+                if(email!=''){
+                    
+                    if (validateEmail(email)) {
+                   $msg='';
+        
+               } else {
+                msg="invalid email";
+                  alert(msg);
+                 return false;
+                  }
+                }
+                if(userStatus=='Add'){
+                    if(password==''){
+                        msg="Password can not be blank";
+                        alert(msg);
+                        return false;
+                    }
+
+                }
+                if(address==''){
+                 msg="Address can not be blank";
+                 alert(msg);
+                 return false;
+                }
+                if(phone==''){
+                 msg="Phone can not be blank.";
+                 alert(msg);
+                 return false;
+                }
+                if(phone!=''){
+                  if(!phonenumber(phone)){
+                    alert('Phone no is not valid.');
+                    return false;
+                  }
+                }
+            
+                user_id='';
+                method="POST";
+                url='/auth/users';
+                if(userStatus=='Update'){
+                    user_id=$('#userid').val();
+                    url='/auth/users';
+                    method="PUT";
+                }
+                
+                $.ajax({ url: url,
+                 data: {name:name,email:email,phone:phone,address:address,user_id:user_id,password:password},
+                 type: method,
+                 success: function(output) {
+                    alert(output);
+                    location.reload();
+                 }
+                });
+        
+            });
+            const validateEmail = (email) => {
+            return String(email)
+            .toLowerCase()
+            .match(
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+        };
+        </script>
