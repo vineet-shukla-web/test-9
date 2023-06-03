@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/html" id="data-template">
+     <button id="test"> Click Me</button>
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+            var EventView = Backbone.View.extend({
+
+                el:"#content",
+                template:_.template($('#data-template').html()),
+                events:{
+                    "click #test":"onClick"
+                },
+                onClick:function(){
+                    alert('hello vineet');
+                },
+                initialize: function () {
+                    this.render();
+                },
+                render: function () {
+                    this.$el.html(this.template())
+                    console.log("my first test");
+                }
+            });
+            var eventView = new EventView ();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/html" id="data-template">
+     <button id="test"> Click Me</button>
+    </script>
+    <script>
+
+       // $(document).ready(function () {
+
+            var FirstModel = Backbone.Model.extend({
+
+                initialize: function () {
+                    console.log("this is our first model");
+                }
+
+            });
+            var fmodel = new FirstModel();
+            //fmodel.set('name1','vineet');
+            fmodel.set({
+
+                name: "vineet",
+                course: "MCA"
+
+            });
+       // });
+    </script>
+</body>
+
+</html>

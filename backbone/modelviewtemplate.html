@@ -1,0 +1,58 @@
+<html>
+
+<head>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/html" id="data-template">
+     <button id="test"> Click Me</button>
+    </script>
+    <script>
+
+        // $(document).ready(function () {
+
+
+        // });
+
+        var FirstModel = Backbone.Model.extend({
+
+            initialize: function () {
+                console.log('model created');
+            }
+
+        });
+        // fmodel.set({
+        //     name: "vineet",
+        //     course: "MCA"
+        // });
+        var fmodel = new FirstModel({
+            name: "vineet",
+            course: "MCA"
+
+        });
+        var FirstView = Backbone.View.extend({
+            el: '#content',
+            template: _.template('<%= name %> and course <%= course %>'),
+           // model:fmodel,
+            initialize: function () {
+                this.render();
+            },
+            render: function () {
+                console.log("model view craeted");
+                console.log(this.model.toJSON());
+                this.$el.html(this.template(this.model.toJSON()));
+            }
+        });
+
+        var modelView = new FirstView({
+            model: fmodel
+        });
+    </script>
+</body>
+
+</html>

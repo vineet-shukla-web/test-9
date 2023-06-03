@@ -1,0 +1,18 @@
+{
+    "models": [
+        {
+            "name": "vineet",
+            "email": "vineets081@gmail.com",
+            "phone": "7827959074",
+            "address": "hhdshdh",
+            "id":1
+        },
+        {
+            "name": "vineet1",
+            "email": "vineets081@gmail.com",
+            "phone": "7827959074",
+            "address": "hhdshdh",
+            "id":2
+        }
+    ]
+}

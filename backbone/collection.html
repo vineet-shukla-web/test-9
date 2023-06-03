@@ -1,0 +1,60 @@
+<html>
+
+<head>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/html" id="data-template">
+    </script>
+    <script>
+
+        /*create model*/
+        var Player=Backbone.Model.extend({
+            defaults:{
+                name:'vinett',
+                age:'28',
+                course:'MCA'
+            }
+        })
+         var player1=new Player({
+            name:"suresh",
+            age:'35',
+         });
+        
+         var player2=new Player({
+            name:"ramesh",
+            age:'36',
+         });
+
+         var MyCollection=Backbone.Collection.extend({
+            model:Player,
+         });
+
+         var myCollectionObj=new MyCollection([player1,player2]);
+        /* Create view */
+        var FirstView = Backbone.View.extend({
+            collection:myCollectionObj,
+            initialize: function () {
+                this.render();
+            },
+            render: function () {
+                console.log("model view craeted");
+                //console.log(this.collection.toJSON())
+                _.each(this.collection.toJSON(),function(model){
+                    console.log("Name:"+model.name+"age:"+model.age+"course:"+model.course)
+                })
+            }
+        });
+
+        var modelView = new FirstView({
+
+        });
+    </script>
+</body>
+
+</html>

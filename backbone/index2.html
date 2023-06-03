@@ -1,0 +1,36 @@
+<html>
+
+<head>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/template" id="our-html">this is extenranl template</script>
+    <script>
+
+        $(document).ready(function () {
+            
+        var FirstView=Backbone.View.extend({
+        el:"#content",
+        //template:_.template("hello mind"),
+        template:_.template($('#our-html').html()),
+        initialize:function(){
+            this.render();
+        },
+        
+        render:function(){
+            console.log('gghddd');
+            this.$el.html(this.template());
+        }
+        });
+        var fview=new FirstView();
+
+        });
+    </script>
+</body>
+
+</html>

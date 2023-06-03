@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <br>
+    <h4>User List</h4>
+    <br>
+    <button>Add</button>
+    <div id="content"></div>
+
+    <script type="text/template" id="templ-first">
+    <table class="table table-bordered table striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% _.each(collection,function(model){%>
+        <tr>
+
+            <td> <%=model.name %></td>
+            <td><%=model.email %></td>
+            <td><%=model.phone %></td>
+            <td><%=model.address %></td>
+            <td><a href="#" id="edit"><i class="fa fa-edit"></i></a></td>
+            <td><a href="#" id="del"><i class="fa fa-trash"></i></a></td>
+        </tr>
+        <% })%>
+    </tbody>
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
