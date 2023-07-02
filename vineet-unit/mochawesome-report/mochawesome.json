@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-06-20T08:48:50.398Z",
+    "end": "2023-06-20T08:48:50.449Z",
+    "duration": 51,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a19c8114-0758-4d2d-a593-66808957ed8c",
+      "title": "",
+      "fullFile": "D:\\vineet-unit\\test\\unit.js",
+      "file": "\\test\\unit.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6077709f-5794-40fb-9875-f856b27ce8fc",
+          "title": "Test All Api",
+          "fullFile": "D:\\vineet-unit\\test\\unit.js",
+          "file": "\\test\\unit.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET /Checking user response",
+              "fullTitle": "Test All Api GET /Checking user response",
+              "timedOut": false,
+              "duration": 32,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var res = chai.request('http://localhost:8090/getData')\n.get('?data=1')\n .end((err, res) => {\n    //console.log(\"hfhfh\",res.body.data)\n    expect(res.body.data).to.equal(2);\n    done();\n});",
+              "err": {},
+              "uuid": "dbc85ad0-ecd0-4676-9183-2eeaee994c62",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET /Checking1 user response",
+              "fullTitle": "Test All Api GET /Checking1 user response",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var res = chai.request('http://localhost:8090/getData')\n.get('?data=1')\n .end((err, res) => {\n    //console.log(\"hfhfh\",res.body.data)\n    expect(res.body.data).to.equal(2);\n    done();\n});",
+              "err": {},
+              "uuid": "958d66fc-304c-4376-9067-ca92c2313486",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "1. The side length of the Cube",
+              "fullTitle": "Test All Api 1. The side length of the Cube",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let c1 = new Cube(2);\nexpect(c1.getSideLength()).to.equal(2);\ndone();",
+              "err": {},
+              "uuid": "bf644252-f982-4391-a840-8f626d39d476",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "function test",
+              "fullTitle": "Test All Api function test",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(add()).to.equal(4);\ndone();",
+              "err": {},
+              "uuid": "9020b543-3839-48c8-a233-336c213d75e5",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "====Assert===",
+              "fullTitle": "Test All Api ====Assert===",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "assert.equal(emp.length,2);\ndone()",
+              "err": {},
+              "uuid": "1a57c03f-52c1-474b-905f-0dde34e0b550",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "====Should===",
+              "fullTitle": "Test All Api ====Should===",
+              "timedOut": false,
+              "duration": 2,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "emp[0].should.equal('vineetHHH')\ndone()",
+              "err": {
+                "message": "AssertionError: expected 'vineet' to equal 'vineetHHH'",
+                "estack": "AssertionError: expected 'vineet' to equal 'vineetHHH'\n    at Context.<anonymous> (test\\unit.js:45:23)\n    at processImmediate (internal/timers.js:461:21)",
+                "diff": "- vineet\n+ vineetHHH\n"
+              },
+              "uuid": "e5510dc7-7ede-4610-b32d-2c607a3d0e49",
+              "parentUUID": "6077709f-5794-40fb-9875-f856b27ce8fc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dbc85ad0-ecd0-4676-9183-2eeaee994c62",
+            "958d66fc-304c-4376-9067-ca92c2313486",
+            "bf644252-f982-4391-a840-8f626d39d476",
+            "9020b543-3839-48c8-a233-336c213d75e5",
+            "1a57c03f-52c1-474b-905f-0dde34e0b550"
+          ],
+          "failures": [
+            "e5510dc7-7ede-4610-b32d-2c607a3d0e49"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 37,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
