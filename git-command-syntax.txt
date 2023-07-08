@@ -1,0 +1,27 @@
+//=====git clone for new git setup====//
+
+git clone "path"
+
+
+//====git checkout ====//
+
+git pull origin development
+
+
+//====git command add,commit,push===///
+
+git add "filename"
+
+git commit -m "comment"
+
+git push 
+
+
+//=========git switch branch=====//
+
+git switch branch_name
+
+
+//=======check  branch list  ===//
+
+git barnch status
