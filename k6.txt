@@ -1,0 +1,40 @@
+
+====k6 version check=======//
+k6 -version
+
+============run script====================
+k6 run script.js
+
+//=========export csv or json ====================
+k6 run --out csv=my_test_result.csv script.js
+k6 run --out json=my_test_result.json script.js
+
+//============graph install==============
+go install go.k6.io/xk6/cmd/xk6@latest
+xk6 build --with github.com/szkiba/xk6-dashboard@latest
+k6.exe run --out dashboard verify_app.js
+
+//=========run with graph==========//
+k6.exe run --out dashboard verify_app.js
+
+
+//====API run=====================//
+k6.exe run --out dashboard roster_enable.js done for 1000 users
+k6.exe run --out dashboard password_locker.js 
+k6.exe run --out dashboard verify_app.js
+
+
+//=====================update===========
+k6.exe run --out dashboard assign_app.js
+//=============POST===================
+k6.exe run --out dashboard oneroster_user_roles.js
+k6.exe run --out dashboard assign_roster_server.js
+
+
+
+//or cache endpoints=======//
+https://beta-orcache-api.apis.classlink.com/docs/index.html#/
+
+api-key=bbb14a6a33b44f309ca09a2cc673521c
+user-rsstudent001
+tenant-id-793
